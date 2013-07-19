@@ -13,10 +13,14 @@
 add_shortcode( 'ajaxy_search', 'ajaxy_shortcode' );
 
 function ajaxy_shortcode() {
+	ob_start();
 	if( function_exists( 'ajaxy_search_form' ) && class_exists( 'AjaxyLiveSearch' ) ) {
 		ajaxy_search_form();
 	}
 	else { ?>
 		<div id="ajaxy-live-search-shortcode">Please enable the <strong>Ajaxy Live Search</strong> plugin</div>		
 	<?php }
+	$html = ob_get_contents();
+	ob_end_clean();
+	return $html;
 }
