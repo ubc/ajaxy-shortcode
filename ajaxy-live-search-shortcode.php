@@ -17,9 +17,9 @@ function ajaxy_shortcode() {
 	if( function_exists( 'ajaxy_search_form' ) && class_exists( 'AjaxyLiveSearch' ) ) {
 		ajaxy_search_form();
 	}
-	else { ?>
-		<div id="ajaxy-live-search-shortcode">Please enable the <strong>Ajaxy Live Search</strong> plugin</div>		
-	<?php }
+	else {
+		get_search_form();		
+	}
 	$html = ob_get_contents();
 	ob_end_clean();
 	return $html;
